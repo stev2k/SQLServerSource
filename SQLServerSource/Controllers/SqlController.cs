@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,6 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace SQLServerSource.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class SqlController : ControllerBase
@@ -19,6 +21,7 @@ namespace SQLServerSource.Controllers
         }
 
         [HttpGet("Table")]
+
         public string Get(string tableName)
         {
             var connectionString = "Data Source=172.31.32.1;Initial Catalog=DemoDatabase;User=SA;Password=abcDEF123#;";
